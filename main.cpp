@@ -5,14 +5,16 @@
 #include <fstream>
 using namespace std;
 
-const int W = 20;
+const int W = 20; //for formatting
 
 class Movie{
 private:
+//private member variables
     string writer;
     int year;
     string title;
 public:
+//setters and getters
     string getWriter() {return writer;}
     void setWriter(string w) {writer = w;}
     int getYear() {return year;}
@@ -28,17 +30,20 @@ public:
 };
 
 int main() {
+    //declarations
     vector<Movie> movies_v;
     ifstream fin ("input.txt");
+    //holds temporary data
     string w;
     int y;
     string t;
-
+    //reads file then stores it in temp and puts temp into movies_v
     if (fin.good()) {
-        while (fin >> w) {
-            fin.ignore();
-            getline(fin, t);
+        while (getline(fin, t)) {
             fin >> y;
+            fin.ignore();
+            fin >> w;
+            fin.ignore();
             Movie temp;
             temp.setWriter(w);
             temp.setYear(y);
@@ -50,7 +55,7 @@ int main() {
     else {
         cout << "Input file not found." << endl;
     }
-
+    //outputs
     for (auto movie : movies_v) {
         movie.print();
     }
