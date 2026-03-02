@@ -28,6 +28,27 @@ public:
 };
 
 int main() {
+    vector<Movie> movies_v;
+    ifstream fin ("input.txt");
+    string w;
+    int y;
+    string t;
 
+    if (fin.good()) {
+        while (fin >> w) {
+            fin.ignore();
+            getline(fin, t);
+            fin >> y;
+            Movie temp;
+            temp.setWriter(w);
+            temp.setYear(y);
+            temp.setTitle(t);
+            movies_v.push_back(temp);
+        }
+        fin.close();
+    }
+    else {
+        cout << "Input file not found." << endl;
+    }
     return 0;
 }
