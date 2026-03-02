@@ -5,7 +5,7 @@
 #include <fstream>
 using namespace std;
 
-const int W = 15, SIZE = 4;
+const int W = 20;
 
 class Movie{
 private:
@@ -50,5 +50,10 @@ int main() {
     else {
         cout << "Input file not found." << endl;
     }
+
+    for (auto movie : movies_v) {
+        movie.print();
+    }
+
     return 0;
 }
